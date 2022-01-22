@@ -84,7 +84,7 @@ const UpdateForm = () => {
                     <label for="floatingInput">Password</label>
                 </div>
                 <div className="form-floating my-4 w-50" style={{ marginLeft: "25%" }}>
-                    <input type="password" className="form-control" id="conpass" defaultValue={user.conpass} placeholder="Enter your Confirm Password" />
+                    <input type="password" className="form-control" id="conpass" defaultValue={user.pass} placeholder="Enter your Confirm Password" />
                     <label for="floatingInput">Confirm Password</label>
                 </div>
                 <button onClick={(e)=>(validation(e))} className="btn btn-success w-50" style={{ marginLeft: "25%" }}>Update Data</button>

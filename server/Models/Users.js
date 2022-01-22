@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
+
 const userSchema = mongoose.Schema({
     fullname: {
         type:String,
@@ -9,6 +10,9 @@ const userSchema = mongoose.Schema({
     },
     phone: {
         type:Number
+    },
+    pic:{
+        type:String
     },
     pass: {
         type:String

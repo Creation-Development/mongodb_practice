@@ -4,14 +4,18 @@ const app = express();
 require("dotenv").config()
 const port = process.env.PORT
 const userRoute = require("./Routes/userRoute")
-const dbConnect = require("./Configs/dbconnection")
+const productsRoutes = require("./Routes/productsRoutes")
+const dbConnect = require("./Configs/dbconnection");
+
+app.use("/public",express.static(__dirname +'/public'))
+
 
 dbConnect()
 app.use(express.json());
 app.use(cors())
-
-
 app.use("/",userRoute)
+app.use("/product",productsRoutes)
+
 
 app.listen(port,(req,res)=>{
     console.log(`server is running on http://localhost:${port}`);

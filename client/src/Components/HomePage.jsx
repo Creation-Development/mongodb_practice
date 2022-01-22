@@ -5,6 +5,7 @@ const HomePage = () => {
         <div className='container text-center my-4'>
             <h1 className="text-success my-4">Wemelcome to Home page</h1>
             <button className="btn btn-danger my-4"onClick={(e)=>{window.location="/add-user"}}>Registration Form</button>
+            <button className="btn btn-danger m-4"onClick={(e)=>{window.location="/product/add"}}>Products</button>
         </div>
     )
 }
