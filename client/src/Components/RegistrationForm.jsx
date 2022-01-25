@@ -26,19 +26,20 @@ export default function SignUp() {
       .then((item) => (
         setdata(item.data)
       ))
-  },[])
+  }, [])
 
 
 
   var sendData = (data) => {
     const dat = new FormData()
 
-    dat.append("name",name)
-    dat.append("email",email)
-    dat.append("phone",phone)
-    dat.append("pic",pic)
-    dat.append("pass",pass)
-
+    dat.append("name", name)
+    dat.append("email", email)
+    dat.append("phone", phone)
+    dat.append("pass", pass)
+    for (let i = 0; i < pic.length; i++) {
+      dat.append("pic", pic[i])
+    };
     axios.post(url, dat)
       .then(res => {
         alert('Data send successfully...!!')
@@ -85,8 +86,6 @@ export default function SignUp() {
       sendData(value)
     }
   }
-
-  console.log(pic);
 
 
   return (
@@ -146,10 +145,11 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="avtar"
-                  onChange={(e) => (setpic(e.target.files[0]))}
+                  onChange={(e) => (setpic(e.target.files))}
                   label="Profile Pic"
                   type="file"
                   id="pic"
+                  multiple
                 />
               </Grid>
               <Grid item xs={12}>

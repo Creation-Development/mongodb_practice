@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
         type:Number
     },
     pic:{
-        type:String
+        type:Array
     },
     pass: {
         type:String

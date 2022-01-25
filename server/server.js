@@ -6,14 +6,18 @@ const port = process.env.PORT
 const userRoute = require("./Routes/userRoute")
 const productsRoutes = require("./Routes/productsRoutes")
 const dbConnect = require("./Configs/dbconnection");
+const fileUpload = require('express-fileupload');
 
-app.use("/public",express.static(__dirname +'/public'))
+// app.use("/public",express.static(__dirname +'/public'))
 
 
 dbConnect()
+app.use(fileUpload({
+    useTempFiles:true
+}))
 app.use(express.json());
 app.use(cors())
-app.use("/",userRoute)
+app.use(userRoute)
 app.use("/product",productsRoutes)
 
 

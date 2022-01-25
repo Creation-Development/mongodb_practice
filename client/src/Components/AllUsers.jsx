@@ -12,6 +12,7 @@ import { CircularProgress } from '@mui/material';
 
 export default function AllUsers() {
   const [users, setUsers] = React.useState([]);
+  console.log(users);
   React.useEffect(() => {
     axios.get("http://localhost:5000/all-user")
       .then((res) => {
@@ -31,11 +32,17 @@ const deleteUser = (e,email) => {
     console.log(err);
   })
 }
+// if(users){
+//   console.log("nothing");
+// }
+// else{
+//   window.location.reload()
+// }
 
   return (
     <div className="container my-4">
       <h2 className="text-danger text-center my-4">All User Data</h2>{
-        users.length == 0 ?
+        users.length === 0? 
           <div className="text-center">
             <CircularProgress color="success" />
           </div>
@@ -64,7 +71,11 @@ const deleteUser = (e,email) => {
                     <TableCell align="center" component="th" scope="row">
                       {index + 1}
                     </TableCell>
-                    <TableCell align="center"><img style={{borderRadius:"50px"}} alt="" src={`http://localhost:5000/${row.pic}`} width={"55px"} height={"55px"}/></TableCell>
+                    {
+                      row.pic.length > 0?
+                      <TableCell align="center"><img style={{borderRadius:"50px"}} alt="" src={row.pic[0].url} width={"55px"} height={"55px"}/></TableCell>:
+                      <TableCell>Loading...</TableCell>
+                    }
                     <TableCell align="center">{row.fullname}</TableCell>
                     <TableCell align="center">{row.email}</TableCell>
                     <TableCell align="center">{row.phone}</TableCell>
